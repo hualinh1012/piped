@@ -1,30 +1,41 @@
 import { createApp } from "vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-    faEye,
-    faThumbtack,
-    faCheck,
-    faHeart,
-    faHeadphones,
-    faRss,
-    faChevronLeft,
-    faLevelDownAlt,
-    faTv,
-    faLevelUpAlt,
-    faBroadcastTower,
-    faCirclePlus,
-    faCircleMinus,
-    faXmark,
-    faClone,
-    faShare,
     faBook,
-    faServer,
-    faDonate,
     faBookmark,
+    faBroadcastTower,
+    faCheck,
+    faChevronLeft,
+    faCircleMinus,
+    faCirclePlus,
+    faClone,
+    faDonate,
     faEdit,
+    faEye,
+    faHeadphones,
+    faHeart,
+    faLevelDownAlt,
+    faLevelUpAlt,
+    faRss,
+    faServer,
+    faShare,
+    faThumbtack,
+    faTv,
+    faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faBitcoin, faYoutube, faOdysee } from "@fortawesome/free-brands-svg-icons";
+import { faBitcoin, faGithub, faOdysee, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import router from "@/router/router.js";
+import App from "./App.vue";
+
+import TimeAgo from "javascript-time-ago";
+
+import en from "javascript-time-ago/locale/en";
+import { createI18n } from "vue-i18n";
+import enLocale from "@/locales/en.json";
+import "@unocss/reset/tailwind.css";
+import "uno.css";
+
 library.add(
     faEye,
     faGithub,
@@ -53,19 +64,7 @@ library.add(
     faEdit,
 );
 
-import router from "@/router/router.js";
-import App from "./App.vue";
-
-import TimeAgo from "javascript-time-ago";
-
-import en from "javascript-time-ago/locale/en";
-
 TimeAgo.addDefaultLocale(en);
-
-import { createI18n } from "vue-i18n";
-import enLocale from "@/locales/en.json";
-import "@unocss/reset/tailwind.css";
-import "uno.css";
 
 const timeAgo = new TimeAgo("en-US");
 
@@ -171,7 +170,7 @@ const mixin = {
             } else return defaultVal;
         },
         apiUrl() {
-            return this.getPreferenceString("instance", "https://pipedapi.kavin.rocks");
+            return this.getPreferenceString("instance", "http://pipedapi.kavin.rocks");
         },
         authApiUrl() {
             if (this.getPreferenceBoolean("authInstance", false)) {

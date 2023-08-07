@@ -6,22 +6,22 @@
             <div>
                 <input
                     v-model="username"
+                    :aria-label="$t('login.username')"
+                    :placeholder="$t('login.username')"
+                    autocomplete="username"
                     class="input"
                     type="text"
-                    autocomplete="username"
-                    :placeholder="$t('login.username')"
-                    :aria-label="$t('login.username')"
                     @keyup.enter="login"
                 />
             </div>
             <div>
                 <input
                     v-model="password"
+                    :aria-label="$t('login.password')"
+                    :placeholder="$t('login.password')"
+                    autocomplete="password"
                     class="input"
                     type="password"
-                    autocomplete="password"
-                    :placeholder="$t('login.password')"
-                    :aria-label="$t('login.password')"
                     @keyup.enter="login"
                 />
             </div>
